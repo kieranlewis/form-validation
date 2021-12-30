@@ -10,18 +10,18 @@
 </head>
 <body>
     <form>
-        <h2>Form</h2>
+        <h2>Sign Up</h2>
         <div>
             <label for="email">Email</label>
             <input type="email" id="email" name="email" required>
         </div>
         <div>
             <label for="country">Country</label>
-            <input type="text" id="country" name="country" reuqired>
+            <input type="text" id="country" name="country" required>
         </div>
         <div>
             <label for="zip">Zip Code</label>
-            <input type="number" id="zip" name="zip" required>
+            <input type="number" id="zip" name="zip" min=0 required>
         </div>
         <div>
             <label for="password">Password</label>
@@ -31,6 +31,8 @@
             <label for="passConf">Confirm Password</label>
             <input type="text" id="passConf" name="passConf" required>
         </div>
+        <button type="submit">Submit</button>
+        <p class="error">No Errors</p>
     </form>
 </body>
 </html>

@@ -6,3 +6,7 @@ form {
     border: 2px solid black;
     width: fit-content;
 }
+
+.invalid {
+    border: 1px dashed red;
+}
