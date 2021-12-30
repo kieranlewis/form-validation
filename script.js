@@ -22,13 +22,15 @@ function checkForm() {
         }
     }
 
-    if(inputs[3].value != inputs[4].value) {
-        errorMessage.push('Password and confirmation should be the same');
-    }
-
     inputs.forEach(input => {
         if(input.validity.valid) input.classList.remove('invalid');
     })
+
+    if(inputs[3].value != inputs[4].value) {
+        errorMessage.push('Password and confirmation should be the same');
+        highlightElement(inputs[3]);
+        highlightElement(inputs[4]);
+    }
 
     if(errorMessage.length == 0) {
         error.textContent = 'Hi Five';
