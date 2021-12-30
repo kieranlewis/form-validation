@@ -9,14 +9,15 @@ function checkForm() {
     for(let i = 0; i < inputs.length - 1; i++) {
         let currentInput = inputs[i];
         if(currentInput.validity.valueMissing) {
-            errorMessage.push(`${currentInput.name} field is missing\n`);
+            errorMessage.push(`${currentInput.name} field is missing`);
+            highlightElement(currentInput);
         }
 
-        if(currentInput.validity.typeMismatch) {
+        else if(currentInput.validity.typeMismatch) {
             errorMessage.push(`${currentInput.name} should be of type ${currentInput.type}`);
         }
 
-        if(currentInput.validity.rangeUnderFlow) {
+        else if(currentInput.validity.rangeUnderFlow) {
             errorMessage.push(`${currentInput.name} should be greater than 0`);
         }
     }
@@ -25,19 +26,20 @@ function checkForm() {
         errorMessage.push('Password and confirmation should be the same');
     }
 
+    inputs.forEach(input => {
+        if(input.validity.valid) input.classList.remove('invalid');
+    })
+
     if(errorMessage.length == 0) {
         error.textContent = 'Hi Five';
     } else {
         error.textContent = errorMessage;
     }
+}
 
-    //Check if all inputs are valid
-    /*
-    if(inputs.every(input => input.validity.valid)) {
-        error.textContent = 'Hi Five!!!';
-    } else {
-        error.textContent = 'Errors Found';
-    }*/
+function highlightElement(input) {
+    if(input.classList.contains('invalid')) return;
+    else input.classList.add('invalid');
 }
 
 // Event Listeners
